@@ -99,12 +99,11 @@ client.on('message',async message => {
 
   //var firstMember = message.mentions.members.first();
   let commandfile = client.commands.get(cmd.slice(prefix.length));
-
-  console.log(commandfile);
-  if(commandfile) commandfile.run(client, message, args);
+  if(commandfile) {
+    console.log(commandfile);
+    commandfile.run(client, message, args);
+  }
   
-
-
   //-------------單個判斷----------------------
 
   if(message.content.indexOf("打") != -1){
