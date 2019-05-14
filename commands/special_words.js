@@ -39,8 +39,8 @@ module.exports.run = async (client, message, args) => {
         let random_msg = getRandom(colorBox.length);
         message.channel.send(colorBox[random_msg]);
         }
-        // Hello
-        for(var i = 0; i < getHelloBox.length;i++){
+    // Hello
+    for(var i = 0; i < getHelloBox.length;i++){
         if(message.content.indexOf(getHelloBox[i]) != -1){
             let random_msg = getRandom(helloBox.length);
             let helloMsg = helloBox[random_msg];
@@ -48,7 +48,6 @@ module.exports.run = async (client, message, args) => {
             break;
         }
     }
-    
 }
 module.exports.help = {
     name: "special_words"

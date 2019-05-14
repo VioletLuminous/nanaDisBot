@@ -4,7 +4,7 @@ const client = new Discord.Client({disableEveryone: true});
 const token = require('./NanaToken.js').discordToken;
 const botT1_User = require('./NanaToken.js').discord_botT1_User;
 
-const giftPresentBox = require('./NanaMessage.js').giftPresentMessage;
+const giftPresentBox = require('./commands/forfunMessage/NanaMessage.js').giftPresentMessage;
 
 const prefix = "!";
 
