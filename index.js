@@ -4,6 +4,8 @@ const client = new Discord.Client({disableEveryone: true});
 const token = require('./NanaToken.js').discordToken;
 const botT1_User = require('./NanaToken.js').discord_botT1_User;
 
+const giftPresentBox = require('./NanaMessage.js').giftPresentMessage;
+
 const prefix = "!";
 
 client.commands = new Discord.Collection(); 
@@ -23,19 +25,6 @@ fs.readdir("./commands/", (err, files) => {
   });
 });
 
-//TEXTBOX.inclide
-const getHelloBox = require('./NanaMessage.js').getHelloMessage;
-const helloBox = require('./NanaMessage.js').helloMessage
-const randomBox = require('./NanaMessage.js').randomMessage;
-const colorBox = require('./NanaMessage.js').colorMessage;
-const aruBox = require('./NanaMessage.js').aruMessage;
-const utusBox = require('./NanaMessage.js').utusMessage;
-const giftPresentBox = require('./NanaMessage.js').giftPresentMessage;
-
-function getRandom(x){
-  return Math.floor(Math.random()*x);
-};
-
 /*=============顯示分支用函數
 client.on('message', (msg)=>{
   console.log(msg); });*/
@@ -45,9 +34,6 @@ client.on("ready", () => {
   // This event will run if the bot starts, and logs in, successfully.
   console.log('Bot is already in run');
   console.log(` ${client.user.username} has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`); 
-  // Example of changing the bot's playing game to something useful. `client.user` is what the
-  // docs refer to as the "ClientUser".
-  //client.user.setActivity(`Serving ${client.guilds.size} servers`);
   client.user.setActivity('喵喵喵!', {type: "WATCHING"}); 
 });
 
@@ -71,7 +57,10 @@ client.on("guildMemberAdd", (member) => { // Check out previous chapter for info
     guild.systemChannel.send(send1 + send2 + send3)
   }
 });
-
+// error handing
+client.on('error', (err) => {
+  console.log(err.message)
+});
 /*------------------------BOT joins function------------------------;
 client.on("guildCreate", guild => {
   // This event triggers when the bot joins a guild.
@@ -95,57 +84,23 @@ client.on('message',async message => {
 
   let messageArr = message.content.split(" ");
   let cmd = messageArr[0];
+  let cmd_0 = cmd[0];
   let args = messageArr.slice(1);
 
-  //var firstMember = message.mentions.members.first();
-  let commandfile = client.commands.get(cmd.slice(prefix.length));
-  if(commandfile) {
-    console.log(commandfile);
-    commandfile.run(client, message, args);
-  }
-  
-  //-------------單個判斷----------------------
-
-  if(message.content.indexOf("打") != -1){
-    if(Math.random() > 0.5){
-      let random_msg = getRandom(utusBox.length);
-      message.channel.send(utusBox[random_msg]);
-    }
-  }
-  if(message.content.indexOf("有") != -1){
-    if(Math.random() > 0.5){
-      let random_msg = getRandom(aruBox.length);
-      message.channel.send(aruBox[random_msg]);
-    }
-  }
-  //機率 OK
-  if(message.content.indexOf("機率") != -1){
-    if(Math.random() > 0.2){
-      let random_msg = getRandom(randomBox.length);
-      var randomBox_msg = randomBox[random_msg] + getRandom(101) + '%';
-      if(Math.random() > 0.8)
-        var randomBox_msg = '~~' + randomBox_msg + '~~';
-      message.channel.send(randomBox_msg);
-      }
-    }
-  //顏色 OK
-  if(message.content.indexOf("顏色") != -1){
-    let random_msg = getRandom(colorBox.length);
-    message.channel.send(colorBox[random_msg]);
-  }
-  // Hello
-  for(var i = 0; i < getHelloBox.length;i++){
-    if(message.content.indexOf(getHelloBox[i]) != -1){
-      let random_msg = getRandom(helloBox.length);
-      let helloMsg = helloBox[random_msg];
-      message.channel.send(helloMsg.replace("{{user}}" ,message.author));
-      break;
+  if(cmd_0 === prefix){
+    let commandfile = client.commands.get(cmd.slice(prefix.length));
+    if(commandfile) {
+      //console.log(commandfile);
+      commandfile.run(client, message, args);
     }
   }
 
-  //-----------------------------------
+  let special_words = client.commands.get('special_words');
+  //console.log(special_words);
+  special_words.run(client, message, args);
 
 });
+  client.login(token);
 
 // Using Discord.js Stable
 
@@ -197,6 +152,3 @@ exports.run = (client, message, args, ops) => {
       .then(g => console.log(`Left the guild ${g}`))
        .catch(console.error);
 }*/
-
-
-client.login(token);
