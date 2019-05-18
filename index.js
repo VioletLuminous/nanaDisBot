@@ -2,13 +2,15 @@ const Discord = require('discord.js');
 const client = new Discord.Client({disableEveryone: true});
 
 const token = require('./NanaToken.js').discordToken;
-const botT1_User = require('./NanaToken.js').discord_botT1_User;
-
 const giftPresentBox = require('./commands/forfunMessage/NanaMessage.js').giftPresentMessage;
-
 const prefix = "!";
-
 client.commands = new Discord.Collection(); 
+
+const helloBox = require('./commands/forfunMessage/NanaMessage.js').helloMessage
+
+function getRandom(x){
+  return Math.floor(Math.random()*x);
+};
 
 const fs = require("fs");
 fs.readdir("./commands/", (err, files) => {
@@ -24,7 +26,6 @@ fs.readdir("./commands/", (err, files) => {
     client.commands.set(props.help.name, props);
   });
 });
-
 /*=============顯示分支用函數
 client.on('message', (msg)=>{
   console.log(msg); });*/

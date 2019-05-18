@@ -16,11 +16,12 @@ module.exports = {
         "妳好呀 {{user}}!",
         "Hi, {{user}}看起來真有精神。",
         "嗨 {{user}}需要來點咖啡嗎?",
-        "!!{{user}}發現 OAO",
+        " ! {{user}}發現 OAO",
         "Hello, {{user}}醬",
         "{{user}} 呀哈囉",
-        "猜猜是誰來了呢? 答案是__{{user}}",
-        "{{user}}  (・ω・)ノ"
+        "猜猜是誰來了呢? 有點像是__{{user}}",
+        "{{user}}  (・ω・)ノ",
+        "こんにちは{{user}}さん"
     ],
     randomMessage:[
         "可能是",
@@ -50,7 +51,7 @@ module.exports = {
         "如果智障有顏色的話，那一定是...",
         "嘿嘿嘿，妳說妳需要なな的意見?",
         "聽說喜歡紫色的傢伙都怪怪的耶?!",
-        "天上的星星大部分是什麼顏色的呀，Hmm...我很好奇!"
+        "天上的星星有哪些顏色呀?，Hmm...我很好奇!"
     ],
     welcomeMessages:[
         "Hmph, looks like **{{user}}**, another baka, has joined.",

@@ -1,4 +1,3 @@
-const Discord = require('discord.js');
 const botT1_User = require('../NanaToken').discord_botT1_User;
 module.exports.run = async (client, message, args) => {
     //if(!message.guild.id.size < 1) return message.reply("You must supply a Guild ID")
@@ -12,5 +11,5 @@ module.exports.run = async (client, message, args) => {
     }
 }
 module.exports.help = {
-    name: "なな"
+    name: "nanaLeaveGuild"
 }
