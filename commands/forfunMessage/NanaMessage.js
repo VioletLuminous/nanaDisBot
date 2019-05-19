@@ -55,6 +55,17 @@ module.exports = {
         "聽說喜歡紫色的傢伙都怪怪的耶?!",
         "天上的星星有哪些顏色呀?，Hmm...我很好奇!"
     ],
+    diceMessage:[
+        ":game_die:◜１",
+        ":game_die:◜２",
+        ":game_die:◜３",
+        ":game_die:◜４",
+        ":game_die:◜５",
+        ":game_die:◜６"
+    ],
+    throwMessage:[
+        "⤤", "⤥", "⤻", "⤹", "⤿", "↺", "↻", "↬", "↟", "↡", "↠", "↯", "↝"
+    ],
     welcomeMessages:[
         "Hmph, looks like **{{user}}**, another baka, has joined.",
         "It's not like I like you or anything... but welcome to the server **{{user}}**.",
