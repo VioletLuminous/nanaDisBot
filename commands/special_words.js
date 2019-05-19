@@ -28,10 +28,13 @@ module.exports.run = async (client, message, args) => {
     if(message.content.indexOf("機率") != -1){
         if(Math.random() > 0.2){
             let random_msg = getRandom(randomBox.length);
-            var randomBox_msg = randomBox[random_msg] + getRandom(101) + '%';
-            if(Math.random() > 0.8)
-                var randomBox_msg = '~~' + randomBox_msg + '~~';
-                message.channel.send(randomBox_msg);
+            var randomBox_msg =  getRandom(101) + '%';
+            var probabilityMsg = randomBox[random_msg];
+            
+            if(Math.random() > 0.8){
+                randomBox_msg = '~~' + randomBox_msg + '~~';
+            }
+            message.channel.send(probabilityMsg.replace("{{prop}}", randomBox_msg));
         }
     }
     //顏色 OK
@@ -44,7 +47,7 @@ module.exports.run = async (client, message, args) => {
         if(message.content.indexOf(getHelloBox[i]) != -1){
             let random_msg = getRandom(helloBox.length);
             let helloMsg = helloBox[random_msg];
-            message.channel.send(helloMsg.replace("{{user}}" ,message.author));
+            message.channel.send(helloMsg.replace("{{user}}", message.author));
             break;
         }
     }
@@ -52,10 +55,3 @@ module.exports.run = async (client, message, args) => {
 module.exports.help = {
     name: "special_words"
 }
-
-
-
-
-
-
-
